@@ -21,9 +21,15 @@ public class VueloDAO {
         this.template = template;
     }
     
-    public List<VueloDAO> obtenerVuelos(){
-        
+    public List obtenerVuelos(){       
         String sqlQuerry = "SELECT * FROM vuelos WHERE fecha >= CURDATE()";
+        List vuelos = template.queryForList(sqlQuerry);
+
+        return vuelos;
+    }
+    
+    public List buscarVuelo(String origen, String destino){
+        String sqlQuerry = "SELECT * FROM vuelos WHERE origen = '"+origen+"' AND destino = '"+destino+"'";
         List vuelos = template.queryForList(sqlQuerry);
         
         return vuelos;

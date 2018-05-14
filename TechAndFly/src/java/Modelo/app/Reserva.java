@@ -5,6 +5,8 @@
  */
 package Modelo.app;
 
+import java.sql.Date;
+
 /**
  *
  * @author Personal
@@ -13,14 +15,19 @@ public class Reserva {
     private int cedula;
     private int idVuelo;
     private int sillasReserva;
+    private Date fechaReserva;
+    private float costo;
+    
 
     public Reserva() {
     }
 
-    public Reserva(int cedula, int idVuelo, int sillasReserva) {
+    public Reserva(int cedula, int idVuelo, int sillasReserva, Date fechaReserva, float costo) {
         this.cedula = cedula;
         this.idVuelo = idVuelo;
         this.sillasReserva = sillasReserva;
+        this.fechaReserva = fechaReserva;
+        this.costo = costo;
     }
 
     public int getCedula() {

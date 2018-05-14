@@ -13,8 +13,8 @@
     </head>
     <body>
         <h2>Bienvenidos a Tech and Fly</h2><br>
-        <p>Para ver los vuelos disponibler presione <a href="/TechAndFly/vuelos"> ver vuelos </a></p>
-        <p>Para ver reservas hechas <a href="/TechAndFly/reservas"> ver reservas </a></p>
+        <p>Para ver los vuelos disponibler presione <a href="/TechAndFly/vuelos"> vuelos </a></p>
+        <p>Para ver o hacer reservas <a href="/TechAndFly/reservas"> reservas </a></p>
         <p>Para ver registrarse <a href="/TechAndFly/personas"> registro </a></p>
     </body>
 </html>

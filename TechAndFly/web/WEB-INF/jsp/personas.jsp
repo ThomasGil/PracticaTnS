@@ -33,9 +33,9 @@
             </div>
         </div>
         <div>
-            <p>Para ver los vuelos disponibler presione <a href="vuelos"> ver vuelos </a></p>
-            <p>Para ver reservas hechas <a href="reservas"> ver reservas </a></p>
-            <p>Para ver volver al inicio <a href="home"> ver reservas </a></p>
+            <p>Para ver los vuelos disponibler presione <a href="vuelos"> vuelos </a></p>
+            <p>Para ver o hacer reservas <a href="reservas"> reservas </a></p>
+            <p>Para ver volver al inicio <a href="/TechAndFly"> home </a></p>
         </div>
     </body>
 </html>

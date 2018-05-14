@@ -45,10 +45,17 @@
             </div>
             <div>
                 <div>
-
+                    <form:form modelAttribute="reserva" action="consultarReservas">
+                    <form:label path="cedula"> cedula </form:label>
+                    <form:input path="cedula" />
+                    <input type="submit" value="Consultar">
+                    </form:form>
                 </div>
             </div>
-            <table>
+            <div>
+                <p style="color: red">${mensajeReservas}</p>
+            </div>
+            <table style="border: black; border-width: 1">
                 <thead>
                     <tr>
                         <th> Codigo Reserva </th>
@@ -72,7 +79,7 @@
         <div>
             <p>Para ver los vuelos disponibler presione <a href="vuelos"> ver vuelos </a></p>
             <p>Para registrarse ir a <a href="personas"> registro </a></p>
-            <p>Para ver volver al inicio <a href="home"> ver reservas </a></p>
+            <p>Para ver volver al inicio <a href="/TechAndFly"> home </a></p>
         </div>
     </body>
 </html>

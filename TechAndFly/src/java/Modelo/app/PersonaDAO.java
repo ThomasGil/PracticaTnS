@@ -26,6 +26,14 @@ public class PersonaDAO {
         return persona;
     }
     
+    public List validarPersona(int cedula){
+        String sqlQuerry = "SELECT * FROM personas WHERE cedula = "+cedula+" AND "
+                + "fecha_nacimiento <= DATE_SUB(CURDATE(), INTERVAL 18 YEAR)";
+        List persona = template.queryForList(sqlQuerry);
+        return persona;
+    
+    }
+    
     public void registraPersona(Persona persona){
         String sqlQuerry = "INSERT INTO personas (cedula,nombre_completo,fecha_nacimiento)" 
                 + " VALUES ("+persona.getCedula()+",'"+persona.getNombreCompleto()+"','"

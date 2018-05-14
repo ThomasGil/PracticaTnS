@@ -43,17 +43,17 @@ public class ReservasControlador {
     @RequestMapping(value = "/reservas")
     public String resevas(Model model){        
         model.addAttribute("reserva", new Reserva());
-        model.addAttribute("consulta", new ConsultaReserva());
+        model.addAttribute("consultarReserva", new Reserva());
         return "/reservas";
     }
     
     @RequestMapping(value = "/reservar", method = RequestMethod.POST)
     public String Reservar(Reserva reserva, Model model){
         
-        if(     personaDAO.buscarPersona(reserva.getCedula()).size() == 0 ||
+        if(     personaDAO.validarPersona(reserva.getCedula()).size() == 0 ||
                 vueloDAO.buscarVuelo(reserva.getIdVuelo()).size() == 0){
             
-            model.addAttribute("mensajeError","La cedula o el codigo del vuelo no estan registrados");           
+            model.addAttribute("mensajeError","La cedula, su edad o el codigo del vuelo no estan registrados");           
         }
         else{
             reservaDAO.hacerReserva(reserva.getCedula(), reserva.getIdVuelo(), reserva.getSillasReserva());
@@ -64,26 +64,18 @@ public class ReservasControlador {
         return "/reservas";
     }
     
-    @RequestMapping(value = "/consultar", method = RequestMethod.POST)
-    public String consultar(ConsultaReserva consulta, Model model){
-        model.addAttribute("mensajeBien","bien");
+    @RequestMapping(value = "/consultarReservas", method = RequestMethod.POST)
+    public String consultar(Reserva reserva, Model model){
+        List reservas = reservaDAO.consultarReservas(reserva.getCedula());
+        if(reservas.size()!= 0){
+            model.addAttribute("consultarReservas",reservas);
+            model.addAttribute("numReservas", reservas.size());
+        }
+        else{
+            model.addAttribute("mensajeReservas","No ha realizado reservas");
+        }
         return "/reservas";
     }
     
-    public class ConsultaReserva{
-        private int cedulaReserva;
-
-        public ConsultaReserva() {
-        }
-        
-        public int getCedulaReserva() {
-            return cedulaReserva;
-        }
-
-        public void setCedulaReserva(int cedulaReserva) {
-            this.cedulaReserva = cedulaReserva;
-        }
-        
-    }
     
 }
