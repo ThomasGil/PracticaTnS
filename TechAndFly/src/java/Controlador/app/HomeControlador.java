@@ -6,34 +6,28 @@
 package Controlador.app;
 
 import Modelo.app.Conexion;
+import Modelo.app.VueloDAO;
+import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author Personal
  */
 @Controller
-public class Controlador {
+public class HomeControlador {
     
-    private JdbcTemplate template;
-    
-    public Controlador(){
-        Conexion conexion = new Conexion();
-        this.template = new JdbcTemplate(conexion.conexion());
+    public HomeControlador(){
     }
-    
-    @RequestMapping(value = "/", method = RequestMethod.GET)  
-    public String index(){
-        return "index";
-    }
-    
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+       
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model){
-        model.addAttribute("ejemplo", "vuelo1");
         return "home";
-    }
+    }    
+    
 }
