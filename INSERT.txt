@@ -1,0 +1,4 @@
+INSERT INTO vuelos (idVuelo,origen,destino,fecha,sillas,precio) VALUES (10001,'Medellin','Bogota','2018-07-06',200,1000);
+INSERT INTO vuelos (idVuelo,origen,destino,fecha,sillas,precio) VALUES (10002,'Bogota','Medellin','2018-07-06',200,1000);
+INSERT INTO vuelos (idVuelo,origen,destino,fecha,sillas,precio) VALUES (10003,'Medellin','Cali','2018-07-06',200,1000);
+INSERT INTO vuelos (idVuelo,origen,destino,fecha,sillas,precio) VALUES (10004,'Cali','Bogota','2018-07-06',200,1000);

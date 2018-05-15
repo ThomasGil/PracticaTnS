@@ -45,8 +45,15 @@ public class VuelosControlador {
     
     @RequestMapping(value = "/consultarVuelos", method = RequestMethod.POST)
     public String Reservar(Vuelo vuelo, Model model){
-        List vuelos = vueloDAO.buscarVuelo(vuelo.getOrigen(),vuelo.getDestino());    
-        model.addAttribute("vuelos", vuelos);
+        List vuelos = vueloDAO.buscarVuelo(vuelo.getOrigen(),vuelo.getDestino());
+        
+        if (vuelos.isEmpty()){
+            model.addAttribute("mensaje","No hay vuelos disponibles entre "
+                    + vuelo.getOrigen()+" y "+vuelo.getDestino()+".");
+        }
+        else{
+            model.addAttribute("vuelos", vuelos);
+        }
         return "vuelos";
     }
     

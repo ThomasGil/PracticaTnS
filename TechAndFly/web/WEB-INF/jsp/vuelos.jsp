@@ -13,7 +13,7 @@
         <title>Vuelos - Tech and Fly </title>
     </head>
     <body>
-        <p>${mensaje}</p>
+        <p style="color: red">${mensaje}</p>
         <div>
                 <form:form modelAttribute="vuelo" action="consultarVuelos">
                 <form:label path="origen"> origen </form:label>

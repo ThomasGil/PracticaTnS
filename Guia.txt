@@ -1,0 +1,8 @@
+
+Ver explicacion en https://www.youtube.com/watch?v=6-8Rz0sC8ZQ&feature=youtu.be
+
+1. crear la base de datos desde el modelo, se abre en MySQL WORKBENCH
+2. ejecutar los comandos de INSERCION que estan en el documento INSERT.txt
+3. ejecutar wamp con servidor de mysql en el puerto 3305(en su defecto cambiar a otro puerto en la clase Conexion del proyecto)
+4. ejecutar proyecto.
+5. Ingresar datos y probar

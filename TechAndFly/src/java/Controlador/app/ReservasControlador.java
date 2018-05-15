@@ -57,7 +57,7 @@ public class ReservasControlador {
         List persona = personaDAO.validarPersona(reserva.getCedula());
         List vuelo = vueloDAO.buscarVuelo(reserva.getIdVuelo());
         
-        String precioAux = vuelo.get(0).toString().split(",")[5].split("=")[1];
+        
         
         Calendar cal = Calendar.getInstance();
         if( persona.isEmpty() || vuelo.isEmpty()){     
@@ -67,7 +67,9 @@ public class ReservasControlador {
         else if (!reservaDAO.validadReserva(reserva.getCedula())){
             model.addAttribute("mensajeError","Ya realizo una reserva hoy");
             }
-        else{    
+        else{
+            String precioAux = vuelo.get(0).toString().split(",")[5].split("=")[1];
+            
             float precio = Float.parseFloat(precioAux.substring(0,precioAux.length()-1));
             reserva.setCosto(precio * reserva.getSillasReserva());
             reserva.setFechaReserva(new Date(cal.getTimeInMillis()));
