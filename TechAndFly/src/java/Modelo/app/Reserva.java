@@ -53,5 +53,22 @@ public class Reserva {
     public void setSillasReserva(int sillasReserva) {
         this.sillasReserva = sillasReserva;
     }
+
+    public Date getFechaReserva() {
+        return fechaReserva;
+    }
+
+    public void setFechaReserva(Date fechaReserva) {
+        this.fechaReserva = fechaReserva;
+    }
+
+    public float getCosto() {
+        return costo;
+    }
+
+    public void setCosto(float costo) {
+        this.costo = costo;
+    }
+    
     
 }

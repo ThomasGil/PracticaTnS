@@ -43,8 +43,8 @@
                         <td> <c:out value="${vuelo.origen}"/> </td>
                         <td> <c:out value="${vuelo.destino}"/> </td>
                         <td> <c:out value="${vuelo.fecha}"/> </td>
-                        <td> <c:out value="${vuelo.numero_sillas}"/> </td>
-                        <td> <c:out value="${vuelo.precio}*${multiplicador}"/> </td>
+                        <td> <c:out value="${vuelo.sillas}"/> </td>
+                        <td> <c:out value="${vuelo.precio}"/> </td>
                     </tr>
                 </c:forEach>
             </table>

@@ -62,6 +62,8 @@
                         <th> Cedula </th>
                         <th> Codigo Vuelo </th>
                         <th> Sillas Reservadas </th>
+                        <th> Fecha Reserva </th>
+                        <th> Costo Reserva </th>
                     </tr>
                 </thead>
 
@@ -71,6 +73,9 @@
                         <td> <c:out value="${reserva.cedula}"/> </td>
                         <td> <c:out value="${reserva.idVuelo}"/> </td>
                         <td> <c:out value="${reserva.sillas_reserva}"/> </td>
+                        <td> <c:out value="${reserva.fecha_reserva}"/> </td>
+                        <td> <c:out value="${reserva.costo}"/> </td>
+                        
                     </tr>
                 </c:forEach>
             </table>
@@ -81,5 +86,9 @@
             <p>Para registrarse ir a <a href="personas"> registro </a></p>
             <p>Para ver volver al inicio <a href="/TechAndFly"> home </a></p>
         </div>
+        <div>
+            <p name ="multiplicador" style="visibility: hidden"> ${multiplicador} </p>
+        </div>
     </body>
+    
 </html>

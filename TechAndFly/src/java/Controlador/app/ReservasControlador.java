@@ -9,8 +9,13 @@ import Modelo.app.ReservaDAO;
 import Modelo.app.Conexion;
 import Modelo.app.PersonaDAO;
 import Modelo.app.Reserva;
+import Modelo.app.Vuelo;
 import Modelo.app.VueloDAO;
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -49,18 +54,29 @@ public class ReservasControlador {
     
     @RequestMapping(value = "/reservar", method = RequestMethod.POST)
     public String Reservar(Reserva reserva, Model model){
+        List persona = personaDAO.validarPersona(reserva.getCedula());
+        List vuelo = vueloDAO.buscarVuelo(reserva.getIdVuelo());
         
-        if(     personaDAO.validarPersona(reserva.getCedula()).size() == 0 ||
-                vueloDAO.buscarVuelo(reserva.getIdVuelo()).size() == 0){
-            
+        String precioAux = vuelo.get(0).toString().split(",")[5].split("=")[1];
+        
+        Calendar cal = Calendar.getInstance();
+        if( persona.isEmpty() || vuelo.isEmpty()){     
             model.addAttribute("mensajeError","La cedula, su edad o el codigo del vuelo no estan registrados");           
         }
-        else{
-            reservaDAO.hacerReserva(reserva.getCedula(), reserva.getIdVuelo(), reserva.getSillasReserva());
-            model.addAttribute("mensajeBien","La Reserva se realizo con exito");
+        
+        else if (!reservaDAO.validadReserva(reserva.getCedula())){
+            model.addAttribute("mensajeError","Ya realizo una reserva hoy");
+            }
+        else{    
+            float precio = Float.parseFloat(precioAux.substring(0,precioAux.length()-1));
+            reserva.setCosto(precio * reserva.getSillasReserva());
+            reserva.setFechaReserva(new Date(cal.getTimeInMillis()));
+            reservaDAO.hacerReserva(reserva);
+            model.addAttribute("mensajeBien","Reserva realizada con exito");
             List reservas = reservaDAO.consultarReservas(reserva.getCedula());
             model.addAttribute("consultarReservas", reservas);
         }
+        
         return "/reservas";
     }
     

@@ -19,10 +19,12 @@ public class ReservaDAO {
     public ReservaDAO(JdbcTemplate template){
         this.template = template;
     }
-    
-    public void hacerReserva(int cedula, int idVuelo, int sillasReserva){
-        String sqlQuerry = "INSERT INTO reservas (cedula,idVuelo,sillas_reserva) "
-                + "VALUES ("+cedula+","+idVuelo+","+sillasReserva+")";
+    public void hacerReserva(Reserva reserva){
+        String sqlQuerry = "INSERT INTO reservas "
+                    + "(cedula,idVuelo,sillas_reserva,fecha_reserva,costo) "
+                    + "VALUES ("+reserva.getCedula()+","+reserva.getIdVuelo()+","
+                    + reserva.getSillasReserva()+ ",'"+reserva.getFechaReserva()+"',"
+                    + reserva.getCosto()+ ")";
         template.update(sqlQuerry);
     }
     
@@ -31,5 +33,14 @@ public class ReservaDAO {
         List reservas  = template.queryForList(sqlQuerry);
         
         return reservas;
+    }
+    
+    public boolean validadReserva(int cedula){
+        
+        String sqlQuerry = "SELECT * FROM reservas WHERE cedula = "+cedula
+                +" AND fecha_reserva = CURDATE()";
+        List siReservo = template.queryForList(sqlQuerry);
+        
+        return siReservo.isEmpty();
     }
 }
